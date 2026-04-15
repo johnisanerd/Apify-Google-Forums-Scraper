@@ -13,8 +13,6 @@ Scrape forum threads, community discussions, and Q&A results directly from Googl
 - Python 3.9 or higher
 - An Apify account and API key ([get a free key here](https://apify.com?fpr=9n7kx3))
 
-### Setup Instructions
-
 1. **Clone the repository**
    ```bash
    git clone https://github.com/johnisanerd/Apify-Google-Forums-Scraper.git
@@ -42,7 +40,7 @@ Scrape forum threads, community discussions, and Q&A results directly from Googl
    uv run python google-forums-scraper.py
    ```
 
-### Alternative: Direct API Key Usage
+### Alternative: Set API Key Directly
 ```bash
 export APIFY_API_TOKEN="your_api_key_here"
 uv run python google-forums-scraper.py
@@ -78,7 +76,7 @@ The [Google Forums scraper on Apify](https://apify.com/johnvc/google-forums-sear
 
 **Academic Research**: Collect public community discourse data for social science, linguistics, or market research studies.
 
-## 🚀 Features
+## ⚡ Features
 
 ### Core Capabilities
 - **Google Forums Tab Targeting**: Queries the dedicated Forums search tab, not general web results
