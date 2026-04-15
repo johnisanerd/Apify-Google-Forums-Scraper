@@ -1,0 +1,13 @@
+[project]
+name = "apify-google-forums-scraper"
+version = "0.1.0"
+description = "Example usage of the Google Forums API Apify scraper"
+requires-python = ">=3.9"
+dependencies = [
+    "apify-client>=1.8.1",
+    "python-dotenv>=1.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
