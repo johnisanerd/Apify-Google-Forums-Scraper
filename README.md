@@ -1,16 +1,20 @@
-# 🗣️ Google Forums Scraper: Scrape Google Forums Search Results with Python
+# 🗣️ Google Forums API: Forum Threads and Discussions in Clean JSON
 
-> **The most efficient, reliable, and developer-friendly Google Forums search scraper**
+> The most efficient, reliable, and developer-friendly way to use the Google Forums API.
 
 **Actor page:** [apify.com/johnvc/google-forums-search-api](https://apify.com/johnvc/google-forums-search-api?fpr=9n7kx3)
 **Input schema:** [apify.com/johnvc/google-forums-search-api/input-schema](https://apify.com/johnvc/google-forums-search-api/input-schema?fpr=9n7kx3)
 
-Scrape forum threads, community discussions, and Q&A results directly from Google's dedicated Forums search tab using Python and the [Google Forums API on Apify](https://apify.com/johnvc/google-forums-search-api?fpr=9n7kx3). Returns structured JSON with titles, URLs, snippets, sources, and answer summaries from Reddit, Quora, Stack Overflow, and thousands of community platforms - in a single API call.
+The Google Forums API runs a search on Google's dedicated Forums tab and returns clean, structured JSON. One call surfaces ranked threads from Reddit, Quora, Stack Overflow, Facebook groups, and thousands of community platforms at once, with title, link, snippet, source, displayed metadata (comments and recency), and position. It supports 40+ countries, country and language localization, device emulation, safe-search and duplicate filters, and pagination.
 
-## 🚀 Quick Start
+## Video Walkthrough
+
+[![Watch the walkthrough](https://img.youtube.com/vi/jREWahDGhJM/maxresdefault.jpg)](https://www.youtube.com/watch?v=jREWahDGhJM)
+
+## Quick Start
 
 ### Prerequisites
-- Python 3.9 or higher
+- Python 3.11 or higher
 - An Apify account and API key ([get a free key here](https://apify.com?fpr=9n7kx3))
 
 1. **Clone the repository**
@@ -21,7 +25,7 @@ Scrape forum threads, community discussions, and Q&A results directly from Googl
 
 2. **Install dependencies with UV**
    ```bash
-   # Install UV if you don't have it:
+   # Install UV if you do not have it:
    curl -LsSf https://astral.sh/uv/install.sh | sh
 
    # Install project dependencies:
@@ -40,77 +44,53 @@ Scrape forum threads, community discussions, and Q&A results directly from Googl
    uv run python google-forums-scraper.py
    ```
 
-### Alternative: Set API Key Directly
+### Alternative: set the API key directly
 ```bash
 export APIFY_API_TOKEN="your_api_key_here"
 uv run python google-forums-scraper.py
 ```
 
-## 🌟 Why Use This Google Forums Scraper?
+## Why Use This Google Forums API?
 
-The [Google Forums scraper on Apify](https://apify.com/johnvc/google-forums-search-api?fpr=9n7kx3) delivers structured forum data from Google's aggregated Forums search tab - the index that surfaces threads from Reddit, Quora, Stack Overflow, and thousands of community platforms simultaneously.
+**One query, every platform.** Google's Forums tab aggregates Reddit, Quora, Stack Overflow, Facebook groups, and niche communities. Submit one query and get ranked forum results from across the public web, instead of maintaining a separate integration per platform.
 
-**One Query, Every Platform**: Scraping Reddit, Quora, and Stack Overflow individually means maintaining three separate scrapers, handling three different rate limits, and merging three different data schemas. The Google Forums search API aggregates all of them. Submit one query, get back ranked forum results from across the entire public web.
+**Precision geo-targeting.** Filter by country code (`gl`), interface language (`hl`), result-language restriction (`lr`), and a location string for fine-grained localization.
 
-**Precision Geo-Targeting**: Filter results by country code (`gl`), language (`hl`), and location string. Whether you need English-language discussions from the US market or localized community threads from a specific region, the input schema gives you fine-grained control without writing custom filters. See the full [input schema reference](https://apify.com/johnvc/google-forums-search-api/input-schema?fpr=9n7kx3) for all options.
+**Scalable pagination.** Set `max_pages` for a shallow sample or a deep dataset. Each page is pushed as its own dataset item for easy streaming and filtering.
 
-**Scalable Pagination**: Set `max_pages` to collect shallow samples or deep datasets. The scraper handles Google's pagination automatically and pushes each page as a discrete dataset item, making it easy to resume, filter, or stream results downstream.
+**Predictable, pay-per-use pricing.** Per run plus per page processed, with no subscription. You pay only for what you fetch.
 
-**Pay-Per-Event, No Subscriptions**: Pricing is $0.02 per run plus $0.02 per page scraped. You pay only for what you use - no monthly seat licenses or minimum commitments. Run one query for a quick competitive check or thousands for a large research dataset.
+**Built for AI and research.** Forum content is among the richest sources of authentic opinion and domain expertise. Collect it at scale for sentiment analysis, brand monitoring, competitive intelligence, and LLM training data, or load it as an MCP tool for Claude and Cursor.
 
-**Production-Ready Output**: Results come back as clean JSON with consistent field names across all forum sources. Titles, URLs, snippets, source platform, publication date, and Google's extracted answer summaries are all included - no post-processing required before loading into a database, pipeline, or LLM context.
-
-**Built for AI and Research Workflows**: Forum content is among the richest sources of authentic human opinion and domain expertise available publicly. The [Google Forums API](https://apify.com/johnvc/google-forums-search-api?fpr=9n7kx3) makes it straightforward to collect that data at scale for sentiment analysis, brand monitoring, competitive intelligence, and LLM fine-tuning datasets.
-
-## 🎯 Common Use Cases for Google Forums Data
-
-**Sentiment Analysis**: Collect forum discussions about a product, brand, or topic and run them through an NLP pipeline to measure public sentiment across Reddit, Quora, and community forums at once.
-
-**Competitive Intelligence**: Monitor what developers, users, and industry participants are saying about competitors in technical communities and Q&A forums.
-
-**LLM Training Data**: Source authentic question-and-answer pairs and community discussions as fine-tuning data for domain-specific language models.
-
-**Community Research**: Identify the most-discussed questions and pain points in any niche by scraping Google's ranked forum results for your target keywords.
-
-**Brand Monitoring**: Track mentions, complaints, and endorsements across all public forum platforms without managing platform-specific API credentials for each one.
-
-**Academic Research**: Collect public community discourse data for social science, linguistics, or market research studies.
-
-## ⚡ Features
+## Features
 
 ### Core Capabilities
-- **Google Forums Tab Targeting**: Queries the dedicated Forums search tab, not general web results
-- **Multi-Platform Coverage**: Returns ranked threads from Reddit, Quora, Stack Overflow, and community forums in a single query
-- **Geo-Targeted Results**: Filter by country code (`gl`), language (`hl`), and location string
-- **Safe Search Control**: Configurable content filtering (`active` or `off`)
-- **Configurable Pagination**: Set `max_pages` to control collection depth
-- **Exact-Match Mode**: Use `nfpr` to disable auto-correction and return exact-match results only
+- **Forums-tab search** across Reddit, Quora, Stack Overflow, and community platforms
+- **Localization** by country, interface language, and result language
+- **Device emulation** (desktop, mobile, tablet)
+- **Safe-search, auto-correct, and duplicate filters**
+- **Multi-page pagination** with a configurable page cap
 
 ### Data Quality
-- **Consistent JSON Schema**: Every result shares the same field structure regardless of source platform
-- **Answer Summaries**: Captures Google's extracted answer summaries where present
-- **Full Snippet Text**: Complete snippet for each thread, not truncated titles
-- **Source Attribution**: Platform name, displayed link, and publication date on every result
-- **Per-Page Dataset Items**: Results are pushed as discrete items for accurate billing and easy downstream filtering
+- **Consistent JSON** with the same field structure across every source
+- **Per-result detail**: position, title, link, snippet, source, and displayed metadata
+- **Source attribution** including subreddit or community name
+- **Per-page dataset items** for accurate billing and easy downstream filtering
 
-## 📖 Usage Examples
+## Usage Examples
 
-### Basic Search: Scrape Google Forums for Any Keyword
-
+### Basic search
 ```json
 {
-  "q": "python web scraping tutorial",
+  "q": "best coffee brewing methods",
   "max_pages": 1
 }
 ```
 
-### Advanced Search: Geo-Targeted Forum Data with Pagination
-
-Search for discussions with US localization, English language filtering, and 3 pages of results.
-
+### Localized, multi-page search
 ```json
 {
-  "q": "AI safety alignment debate",
+  "q": "python vs java",
   "location": "United States",
   "gl": "us",
   "hl": "en",
@@ -119,71 +99,207 @@ Search for discussions with US localization, English language filtering, and 3 p
 }
 ```
 
-## 🔍 Input Parameters
-
-Full input schema reference: [apify.com/johnvc/google-forums-search-api/input-schema](https://apify.com/johnvc/google-forums-search-api/input-schema?fpr=9n7kx3)
+## Input Parameters
 
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
-| `q` | `str` | YES | - | Search query |
-| `location` | `str` | no | - | Location string (e.g. `"United States"`) |
-| `device` | `str` | no | `"desktop"` | Device type: `"desktop"`, `"mobile"`, or `"tablet"` |
-| `gl` | `str` | no | - | Country code (e.g. `"us"`, `"gb"`) |
-| `hl` | `str` | no | - | Language code (e.g. `"en"`, `"fr"`) |
-| `lr` | `str` | no | - | Language restriction (e.g. `"lang_en"`) |
-| `safe` | `str` | no | `"off"` | Safe search: `"active"` or `"off"` |
-| `nfpr` | `str` | no | `"0"` | Disable auto-correction: `"0"` or `"1"` |
-| `filter` | `str` | no | `"0"` | Filter duplicate results: `"0"` or `"1"` |
-| `max_pages` | `int` | no | `1` | Maximum pages to scrape |
-| `output_file` | `str` | no | - | Optional output filename |
+| `q` | `string` | Yes | - | Search query for forum discussions. |
+| `location` | `string` | No | (none) | Location string for localized results, e.g. `Austin, TX, Texas, United States`. |
+| `device` | `string` | No | `desktop` | Device to emulate: `desktop`, `mobile`, or `tablet`. |
+| `gl` | `string` | No | (none) | Country code (ISO 3166-1 alpha-2, lowercase). 40+ markets. |
+| `hl` | `string` | No | (none) | Interface language code (ISO 639-1). |
+| `lr` | `string` | No | (none) | Result-language restriction, e.g. `lang_en`. |
+| `safe` | `string` | No | `off` | Safe search: `active` or `off`. |
+| `nfpr` | `string` | No | `0` | Exclude auto-corrected results: `0` or `1`. |
+| `filter` | `string` | No | `0` | Filter duplicate results: `0` or `1`. |
+| `max_pages` | `integer` | No | `1` | Maximum pages to fetch (`0` = no limit). Each page is billed separately. |
+| `output_file` | `string` | No | (none) | Optional filename to save results. |
 
-## 📊 Output Format
+## Output Format
 
-Each run returns a dataset of structured JSON objects. Sample output:
+A real result for `best coffee brewing methods` (one item per page; snippets are trimmed here for readability).
 
 ```json
 {
-  "query": "python web scraping tutorial",
-  "location": "United States",
-  "gl": "us",
-  "hl": "en",
-  "max_pages": 2,
-  "pages_processed": 2,
-  "organic_results": [
+  "search_parameters": {
+    "q": "best coffee brewing methods",
+    "location": null,
+    "gl": "us",
+    "hl": "en",
+    "safe": "off",
+    "device": "desktop",
+    "max_pages": 1
+  },
+  "search_metadata": {
+    "total_results": 10,
+    "forums_count": 10,
+    "pages_processed": 1,
+    "max_pages_set": 1,
+    "pagination_limit_reached": true
+  },
+  "search_information": {
+    "organic_results_state": "Results for exact spelling"
+  },
+  "page_number": 1,
+  "forum_results": [
     {
       "position": 1,
-      "title": "How do I scrape websites with Python? - Stack Overflow",
-      "link": "https://stackoverflow.com/questions/11914472/how-to-use-python-requests",
-      "displayed_link": "stackoverflow.com",
-      "snippet": "You can use the requests library along with BeautifulSoup to scrape HTML content from websites. Here is a quick start example...",
-      "answer_summary": "Use the requests and BeautifulSoup libraries for basic scraping.",
-      "source": "Stack Overflow",
-      "date": "2024-03-12"
+      "title": "What's your favorite brewing method? : r/Coffee",
+      "link": "https://www.reddit.com/r/Coffee/comments/666cbs/whats_your_favorite_brewing_method/",
+      "displayed_meta": "20+ comments · 9 years ago",
+      "snippet": "I highly recommend the AeroPress for your first brewer. It's practically a giant syringe/plunger with a filter on the end.",
+      "source": "Reddit · r/Coffee"
     },
     {
       "position": 2,
-      "title": "Best Python scraping libraries in 2025 - Reddit",
-      "link": "https://www.reddit.com/r/Python/comments/example",
-      "displayed_link": "reddit.com",
-      "snippet": "The community recommends Scrapy for large-scale projects and httpx for async scraping...",
-      "answer_summary": null,
-      "source": "Reddit",
-      "date": "2025-01-08"
+      "title": "Best coffee brewing methods",
+      "link": "https://www.facebook.com/groups/foodiessofl/posts/2826219634377953/",
+      "displayed_meta": "10+ comments · 1 month ago",
+      "snippet": "My preferred methods are espresso and cold brew. Sometimes I do Aeropress.",
+      "source": "Facebook · Foodies Who Review South Florida"
     }
-  ],
-  "search_metadata": {
-    "total_results_found": 87,
-    "pages_processed": 2,
-    "safe_search": "off",
-    "nfpr": "0"
-  }
+  ]
 }
 ```
 
 ---
 
-[**Made with love**](https://apify.com/johnvc?fpr=9n7kx3)
+## Use as an MCP tool
 
-*Transform your data collection with the most reliable and efficient scraper on the market.*
+You can load the Google Forums API as an MCP tool so assistants call it for you. The MCP server URL preloads just this one Actor:
+
+```
+https://mcp.apify.com/?tools=actors,docs,johnvc/google-forums-search-api
+```
+
+Authenticate with OAuth in the browser when offered, or with your Apify API token (the same `APIFY_API_TOKEN` used by the Python example). Get a token at https://console.apify.com/settings/integrations and a free Apify account at https://apify.com?fpr=9n7kx3 .
+
+## Install in Claude Cowork Desktop
+
+![Install in Claude Cowork Desktop](https://raw.githubusercontent.com/johnisanerd/ApifyPublicData/main/assets/guides/install_mcp_into_claude_desktop.png)
+
+Cowork is the desktop app's automation mode. To give it the Google Forums API as a tool, add the Apify MCP server as a connector.
+
+1. Open the Claude desktop app and go to **Settings → Connectors** (or **Settings → Developer → Edit Config** to edit `claude_desktop_config.json` directly).
+   - macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+   - Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+2. Add the Apify MCP server, preloaded with only this Actor:
+
+```json
+{
+  "mcpServers": {
+    "apify": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.apify.com/?tools=actors,docs,johnvc/google-forums-search-api"
+      ]
+    }
+  }
+}
+```
+
+3. Restart the app. When Cowork first calls the tool, complete the OAuth prompt in your browser, or add your Apify API token in the connector settings to skip OAuth.
+4. In a Cowork chat, confirm the tool is available and ask it to run the Google Forums API.
+
+Download the desktop app and start a free trial: https://claude.ai/referral/uIlpa7nPLg
+More help: https://docs.apify.com/platform/integrations/claude-desktop
+
+## Install in Claude Code
+
+![Install in Claude Code](https://raw.githubusercontent.com/johnisanerd/ApifyPublicData/main/assets/guides/install_mcp_into_claude_code.png)
+
+Claude Code is the command-line tool. Add the Actor's MCP server with one command:
+
+```bash
+claude mcp add --transport http apify \
+  "https://mcp.apify.com/?tools=actors,docs,johnvc/google-forums-search-api"
+```
+
+To use a token instead of browser OAuth:
+
+```bash
+claude mcp add --transport http apify \
+  "https://mcp.apify.com/?tools=actors,docs,johnvc/google-forums-search-api" \
+  --header "Authorization: Bearer YOUR_APIFY_TOKEN"
+```
+
+Then verify with `claude mcp list`, or run `/mcp` inside a session. Ask Claude Code to call the Google Forums API.
+
+Try Claude Code free: https://claude.ai/referral/uIlpa7nPLg
+Claude Code MCP docs: https://code.claude.com/docs/en/mcp
+
+## Install in Claude (website)
+
+![Install in Claude (website)](https://raw.githubusercontent.com/johnisanerd/ApifyPublicData/main/assets/guides/install_mcp_into_claude_ai.png)
+
+On claude.ai you add Apify as a connector, then enable just this Actor's tool.
+
+1. Go to **Settings → Connectors → Browse connectors** and search for **Apify MCP server**. Install it (enable or update if prompted).
+2. When connecting, authenticate with your Apify API token, and enable the tool `johnvc/google-forums-search-api`.
+3. In any chat, open **+ → Connectors** and turn on **Apify**.
+4. Alternatively, choose **Add custom connector** and paste the full MCP URL `https://mcp.apify.com/?tools=actors,docs,johnvc/google-forums-search-api`, using OAuth when prompted.
+5. Ask Claude to run the Google Forums API.
+
+Open Claude on the web: https://claude.ai
+
+## Install in Cursor
+
+![Install in Cursor](https://raw.githubusercontent.com/johnisanerd/ApifyPublicData/main/assets/guides/install_mcp_into_cursor.png)
+
+Cursor reads MCP servers from a project file at `.cursor/mcp.json`.
+
+1. In your project, create `.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "apify": {
+      "url": "https://mcp.apify.com/?tools=actors,docs,johnvc/google-forums-search-api"
+    }
+  }
+}
+```
+
+2. If you prefer token auth over browser OAuth, add a header:
+
+```json
+{
+  "mcpServers": {
+    "apify": {
+      "url": "https://mcp.apify.com/?tools=actors,docs,johnvc/google-forums-search-api",
+      "headers": { "Authorization": "Bearer YOUR_APIFY_TOKEN" }
+    }
+  }
+}
+```
+
+3. Open **Cursor → Settings → MCP** and confirm the **apify** server is connected (green dot).
+4. In Composer or Chat, ask Cursor to call the Google Forums API.
+
+New to Cursor? Get it here: https://cursor.com/referral?code=XQP4VBLI3NNX
+
+## Install in ChatGPT
+
+![Install in ChatGPT](https://raw.githubusercontent.com/johnisanerd/ApifyPublicData/main/assets/guides/install_mcp_into_ChatGPT.png)
+
+ChatGPT connects to the Apify MCP server through Developer mode (available on ChatGPT Pro, Plus, Business, Enterprise, and Education plans).
+
+1. Click your profile icon, then go to **Settings > Apps**. If you do not see a **Create app** button, open **Advanced settings** and enable **Developer mode**.
+2. Click **Create app** and fill out the form:
+   - **Name:** Apify
+   - **MCP Server URL:** `https://mcp.apify.com/?tools=actors,docs,johnvc/google-forums-search-api`
+   - **Authentication:** OAuth
+3. Click **Create** and authorize the connection with Apify.
+4. To use the app in a conversation, click **+** in the chat, choose **Developer mode**, and select **Apify**.
+
+More help: https://docs.apify.com/platform/integrations/mcp
+
+---
+
+[**Made with care**](https://apify.com/johnvc?fpr=9n7kx3)
+
+*Use the Google Forums API to power sentiment analysis, research, and AI workflows with reliable, structured results.*
 
 Last Updated: 2026.05.29
